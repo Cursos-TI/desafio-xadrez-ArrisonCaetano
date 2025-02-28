@@ -64,6 +64,25 @@ int main() {
         k++;
     } while (k < Qsteps);
 
+
+
+
+    
+     // Movimento do Cavalo
+     printf("\nMovimento do Cavalo:\n");
+    
+     
+     for (int L = 0; L < 1; L++) {   // para o L de zero a 1 , ele incrementa
+         while (L < 2) {   // enquanto o L for menor que 2 , ele printa para baixo, entao duas vezes,
+             printf("Baixo\n");
+             L++; // interropendo o loop Infinto
+         }
+           
+         printf("Esquerda\n"); // com o for é de zero a 1 , ele printa esquerda somente uma vez
+     }
+
+   
+
     return 0;
 
 
