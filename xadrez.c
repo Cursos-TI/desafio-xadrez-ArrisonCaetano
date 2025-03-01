@@ -1,89 +1,95 @@
 #include <stdio.h>
- 
+
+// Função de Movimento da Torre e Rainha
+void MoveTowerandQueen(int steps, const char* direction) {
+    if (steps <= 0) return;
+
+    int cont = 0;
+    if (cont < steps) {
+        cont++;
+        printf("%s\n", direction);
+        MoveTowerandQueen(steps - 1, direction);
+    }
+}
+
+// Função de Movimento do Bispo
+void MoveBeshop(int steps, const char* Vdirection, const char* Hdirection) {
+    if (steps <= 0) return; 
+
+    for (int i = 0; i < 1; i++) {
+        for (int j = 0; j < 1; j++) {
+            printf("%s, %s\n", Vdirection, Hdirection);
+        }
+    }
+
+    MoveBeshop(steps - 1, Vdirection, Hdirection);
+}
+
+// Função do Cavalo
+void MoveKnight(const char* Vdirection, const char* Hdirection) {
+   
+    for (int i = 0; i < 2; i++) {
+        ("%s\n", Vdirection);
+        if (i == 1) {
+            break; // Interrompe o loop após duas casas
+        }
+    }
+
+    )
+    for (int j = 0; j < 1; j++) { 
+        printf("%s\n", Hdirection);
+        break; // Interrompe o loop após uma casa
+    }
+}
+
 int main() {
-  
-   
-   int Tsteps = 0;
-   char TowerHeading[10];
-   char BeshophoVertical[10], BeshophoHorizontal[10];
-   char QueenHeading[10];
-   
-     // Movimento da Torre
-    printf("Informe a quantidade de casas da torre:\n");
-    scanf("%d",&Tsteps);
-    printf("\n\n");
+    int Tsteps = 0, Bsteps = 0, Qsteps = 0;
+    char TowerHeading[10], BeshophoVertical[10], BeshophoHorizontal[10], QueenHeading[10];
 
-    //Direção da torre
-    printf("Escolha a direção da Torre (Esquerda, Direita, Cima, Baixo):\n");
+    printf("=============================================\n");
+    printf("    Simulador de Movimentos de Peças de Xadrez\n");
+    printf("=============================================\n\n");
+
+    // Movimento da Torre
+    printf("Movimento da Torre\n");
+    printf("-------------------\n");
+    printf("Quantas casas a Torre deve mover? (número inteiro positivo): ");
+    scanf("%d", &Tsteps);
+    printf("Escolha a direção da Torre (Esquerda, Direita, Cima, Baixo): ");
     scanf("%s", TowerHeading);
-    
-    
     printf("\nMovimento da Torre:\n");
-    printf("\n\n");
-    for(int i = 0; i< Tsteps ; i++)
-    {
-        
-        printf("%s\n", TowerHeading);
+    MoveTowerandQueen(Tsteps, TowerHeading);
+    printf("\n");
 
-    }
-
-
-    // Movimento do bispo
-    int Bsteps = 0;
-    
-    printf("Informe a quantidade de casas do Bispo:\n");
+    // Movimento do Bispo
+    printf("Movimento do Bispo\n");
+    printf("-------------------\n");
+    printf("Quantas casas o Bispo deve mover? (número inteiro positivo): ");
     scanf("%d", &Bsteps);
-    printf("Escolha a direção vertical do Bispo (Cima/Baixo):\n");
+    printf("Escolha a direção vertical do Bispo (Cima ou Baixo): ");
     scanf("%s", BeshophoVertical);
-    printf("Escolha a direção horizontal do Bispo (Esquerda/Direita):\n");
+    printf("Escolha a direção horizontal do Bispo (Esquerda ou Direita): ");
     scanf("%s", BeshophoHorizontal);
-    
     printf("\nMovimento do Bispo:\n");
-    int j = 0;
-    while (j < Bsteps) {
-        printf("%s, %s\n", BeshophoVertical, BeshophoHorizontal);
-        j++;
-    }
+    MoveBeshop(Bsteps, BeshophoVertical, BeshophoHorizontal);
+    printf("\n");
 
-
-     // Movimento da Rainha
-
-    int Qsteps = 0;
-    printf("Informe a quantidade de casas da Rainha:\n");
-    scanf("%d",&Qsteps);
-    printf("\n\n");
-
-    printf("Escolha a direção da Rainha (Esquerda, Direita, Cima, Baixo):\n");
+    // Movimento da Rainha
+    printf("Movimento da Rainha\n");
+    printf("--------------------\n");
+    printf("Quantas casas a Rainha deve mover? (número inteiro positivo): ");
+    scanf("%d", &Qsteps);
+    printf("Escolha a direção da Rainha (Esquerda, Direita, Cima, Baixo): ");
     scanf("%s", QueenHeading);
- 
-
     printf("\nMovimento da Rainha:\n");
-    int k = 0;
-    do {
-        printf("%s\n", QueenHeading);
-        k++;
-    } while (k < Qsteps);
+    MoveTowerandQueen(Qsteps, QueenHeading);
+    printf("\n");
 
-
-
-
-    
-     // Movimento do Cavalo
-     printf("\nMovimento do Cavalo:\n");
-    
-     
-     for (int L = 0; L < 1; L++) {   // para o L de zero a 1 , ele incrementa
-         while (L < 2) {   // enquanto o L for menor que 2 , ele printa para baixo, entao duas vezes,
-             printf("Baixo\n");
-             L++; // interropendo o loop Infinto
-         }
-           
-         printf("Esquerda\n"); // com o for é de zero a 1 , ele printa esquerda somente uma vez
-     }
-
-   
+    // Movimento do Cavalo
+    printf("Movimento do Cavalo\n");
+    printf("--------------------\n");
+    printf("O Cavalo sempre se move em L: duas casas para cima e uma para a direita.\n");
+    MoveKnight("Cima", "Direita");
 
     return 0;
-
-
 }
